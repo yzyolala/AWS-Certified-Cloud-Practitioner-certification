@@ -20,7 +20,7 @@ EC2 instance 就像是一台你可以随意配置的虚拟电脑。它存在于�
 
 你用不到它的时候可以关掉它，这样就不会产生费用；需要的时候再开机使用，就像平时我们用自己的笔记本电脑一样，只不过这台电脑非常强大，而且是在互联网上。
 
-## SSH（Secure Shell），IPv4/IPv6，HTTP，UDP.TCP
+## SSH（Secure Shell），IPv4/IPv6，HTTP，UDP/TCP
 
 SSH
 
@@ -78,3 +78,22 @@ TCP/UDP vs IPv4/IPv6：IPv4和IPv6是网络层协议，负责数据包的寻址�
 
 在实际的网络通信中，IPv4/IPv6是地址和邮路，TCP或UDP是邮递员的传递方法（TCP像是需要签收确认的挂号信，UDP像是扔进你家信箱的广告邮件），而SSH和HTTP是邮件的内容和邮件上的机密印章（SSH提供安全性，HTTP决定内容的格式）。
 
+## SSH，IPv4/IPv6，HTTP，UDP/TCP分别在什么层
+
+SSH (Secure Shell)：SSH是一种协议，它提供加密的终端会话，用于安全地远程访问另一台计算机。SSH通常运行在应用层，但它是建立在较低层的传输协议之上，通常是TCP。
+
+IPv4/IPv6 (Internet Protocol version 4/6)：这些是网络层协议，用于路由和数据包传输，确保数据可以在网络中的不同节点之间传递。
+
+HTTP (Hypertext Transfer Protocol)：HTTP是应用层协议，用于Web浏览器和服务器之间的通信，传输如网页文本、图片和视频等超媒体信息。
+
+UDP (User Datagram Protocol) 和 TCP (Transmission Control Protocol)：这两种都是传输层协议。TCP提供的是一种面向连接的、可靠的数据传输服务，确保数据按顺序且正确无误地到达。
+
+UDP则提供的是一种无连接的传输服务，它不保证数据包的顺序或可靠性，但是在某些情况下，它比TCP更快。
+
+总结一下，它们在OSI模型中所处的层级如下：
+
+应用层：SSH, HTTP
+
+传输层：UDP, TCP
+
+网络层：IPv4, IPv6
