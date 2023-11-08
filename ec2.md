@@ -159,3 +159,17 @@ ping google.com
 
 这个命令用来测试ec2-user从EC2实例到google.com的网络连接。它会发送网络包到google.com，并等待回应，以验证网络连接的状态。
 综上所述，这些步骤是标准的SSH连接流程，用于从本地机器安全地连接到远程AWS EC2实例，并执行一些基本的网络测试。
+
+## EC2 部分 — 概述
+
+EC2 实例：AMI（操作系统）+ 实例大小（CPU + RAM）+ 存储 + 安全组 + EC2 用户数据
+
+安全组：连接到EC2实例的防火墙
+
+EC2 用户数据：在实例首次启动时执行的脚本
+
+SSH：启动终端进入我们的EC2实例（端口22）
+
+EC2 实例角色：链接到IAM角色
+
+购买选项：按需（On-Demand），现货（Spot），预留（Reserved，包括标准和可转换），专用宿主机（Dedicated Host），专用实例（Dedicated Instance）
