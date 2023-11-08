@@ -173,3 +173,20 @@ SSH：启动终端进入我们的EC2实例（端口22）
 EC2 实例角色：链接到IAM角色
 
 购买选项：按需（On-Demand），现货（Spot），预留（Reserved，包括标准和可转换），专用宿主机（Dedicated Host），专用实例（Dedicated Instance）
+
+## 哪种EC2购买选项能提供最大的折扣，但不适合关键任务或数据库？
+
+保留实例（Reserved Instances）
+
+可转换实例（Convertible Instances）
+
+专用宿主机（Dedicated Hosts）
+
+现货实例（Spot Instances）
+
+已选中的答案是现货实例（Spot Instances）
+
+解释：
+现货实例通常提供比其他类型购买选项更大的折扣，因为它们允许用户利用AWS上未使用的EC2计算容量，通常以远低于按需价格的成本。
+
+然而，因为现货实例的价格会根据供求关系变化，并且AWS可以在不提前通知的情况下回收这些实例，所以它们不适合运行关键任务或数据库等需要高度可靠性的应用。
