@@ -97,3 +97,65 @@ UDP则提供的是一种无连接的传输服务，它不保证数据包的顺�
 传输层：UDP, TCP
 
 网络层：IPv4, IPv6
+
+## 用ssh链接aws ec2 instance
+
+```
+(base) zhenyingyu@ZhenyingdeMBP aws % ls
+ec2-tutorial.pem
+(base) zhenyingyu@ZhenyingdeMBP aws % ssh -i ec2-tutorial.pem ec2-user@3.16.181.72
+The authenticity of host '3.16.181.72 (3.16.181.72)' can't be established.
+ED25519 key fingerprint is SHA256:zr73AQPkCta8c9l0AP0o5tQ6+lx5SjRUgdlWhbQEub4.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '3.16.181.72' (ED25519) to the list of known hosts.
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0644 for 'ec2-tutorial.pem' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "ec2-tutorial.pem": bad permissions
+ec2-user@3.16.181.72: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+(base) zhenyingyu@ZhenyingdeMBP aws % chmod 0400 ec2-tutorial.pem
+(base) zhenyingyu@ZhenyingdeMBP aws % ssh -i ec2-tutorial.pem ec2-user@3.16.181.72
+   ,     #_
+   ~\_  ####_        Amazon Linux 2
+  ~~  \_#####\
+  ~~     \###|       AL2 End of Life is 2025-06-30.
+  ~~       \#/ ___
+   ~~       V~' '->
+    ~~~         /    A newer version of Amazon Linux is available!
+      ~~._.   _/
+         _/ _/       Amazon Linux 2023, GA and supported until 2028-03-15.
+       _/m/'           https://aws.amazon.com/linux/amazon-linux-2023/
+
+[ec2-user@ip-172-31-21-163 ~]$ whoami
+ec2-user
+[ec2-user@ip-172-31-21-163 ~]$ ping google.com
+```
+
+这段文本是一个终端会话的记录，显示了一系列使用SSH（Secure Shell）连接到Amazon EC2（Elastic Compute Cloud）实例的步骤。我将一步一步解释你的命令及其输出：
+
+ls
+
+这个命令列出了当前目录（可能是一个名为aws的目录）的内容，显示了一个名为ec2-tutorial.pem的文件，这是一个私钥文件，用于SSH连接。
+ssh -i ec2-tutorial.pem ec2-user@3.16.181.72
+
+这个命令尝试使用ec2-tutorial.pem私钥文件，通过SSH作为ec2-user用户连接到IP地址3.16.181.72的EC2实例。
+第一次连接到一个SSH服务器时，系统会提示你确认服务器的真实性。当你输入yes后，服务器的公钥被保存到本地的known_hosts文件中。
+
+接下来出现了一个错误，指出ec2-tutorial.pem文件的权限太开放（0644），这使得SSH客户端出于安全考虑拒绝使用这个私钥。
+
+chmod 0400 ec2-tutorial.pem
+
+为了解决权限问题，这个命令更改了ec2-tutorial.pem文件的权限，将其设置为仅所有者有读取权限，这是私钥文件所需的安全设置。
+再次运行SSH连接命令后，成功连接到了EC2实例。连接成功后，出现的提示符显示了Amazon Linux 2的欢迎信息，提示Amazon Linux 2的生命周期将在2025年6月30日结束，并推荐使用新版本的Amazon Linux，支持至2028年3月15日。
+
+whoami
+
+这个命令用于确认当前登录的用户是ec2-user。
+ping google.com
+
+这个命令用来测试ec2-user从EC2实例到google.com的网络连接。它会发送网络包到google.com，并等待回应，以验证网络连接的状态。
+综上所述，这些步骤是标准的SSH连接流程，用于从本地机器安全地连接到远程AWS EC2实例，并执行一些基本的网络测试。
