@@ -81,10 +81,10 @@ Amazon S3：一种云存储服务。
 DynamoDB：一种NoSQL数据库服务。
 Fargate：一种无服务器的容器运行服务。
 Lambda：AWS的无服务器计算服务，可以运行代码而无需管理服务器。
+API Gateway
 
-## lamda
+## Lambda
 为什么要使用AWS Lambda：
-
 
 AWS Lambda 就像是一个魔法厨房，你只需要提供食谱（代码），它就会自动为你准备食物（运行代码）。
 
@@ -124,7 +124,7 @@ Lambda容器镜像：容器镜像必须实现Lambda运行时API，对于运行�
 ## Amazon API Gateway：
 
 API Gateway是一种完全托管的服务，开发者可以轻松创建、发布、维护和保护API。
-它是无服务器的，并且可以扩展。
+**它是无服务器的**，并且可以扩展。
 支持RESTful API和WebSocket API。
 提供安全性、用户身份验证、API限流、API密钥、监控等支持。
 示例说明了如何构建一个无服务器API，客户端通过REST API向API Gateway发送代理请求，API Gateway将请求转发到AWS Lambda函数，Lambda函数执行CRUD操作并与DynamoDB交互。
@@ -161,7 +161,7 @@ Batch没有时间限制，任何运行时环境只要打包为Docker镜像即可
 
 可用性与集成: 拥有高可用性，但不支持自动扩展且AWS集成有限。
 
-## AWS（亚马逊网络服务）的其他计算服务：
+## AWS的其他计算服务：
 
 Docker: 用于运行应用程序的容器技术。
 
